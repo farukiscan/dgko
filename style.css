@@ -1,26 +1,236 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-}
+body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: auto;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
 
-.video-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.6;
-    z-index: -1;
-}
+        #video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+        }
 
-.content {
-    position: relative;
-    z-index: 1;
-    color: white;
-    text-align: center;
-    top: 50%;
-    transform: translateY(-50%);
-}
+        #text-overlay {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 3em;
+            font-family: 'Pacifico', cursive;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            animation: shake 1.5s ease-in-out infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(-51%, -52%) rotate(5deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotate(0eg);
+            }
+
+            75% {
+                transform: translate(-49%, -48%) rotate(-5deg);
+            }
+        }
+
+        #new-text-title {
+            position: absolute;
+            top: 30%;
+            /* Adjusted position */
+            left: 50%;
+            transform: translateX(-50%);
+            color: #FFD700;
+            /* Golden color */
+            font-size: 2em;
+            font-family: 'Georgia', serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        #new-text {
+            position: absolute;
+            top: 38%;
+            /* Adjusted position */
+            left: 50%;
+            transform: translateX(-50%);
+            color: #E6E6FA;
+            /* Lavender color */
+            font-size: 1.1em;
+            font-family: 'Arial', sans-serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            text-align: justify;
+            max-width: 80%;
+            line-height: 1.6;
+            max-height: 30vh;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        #new-text::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #new-text::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        #play-prompt {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.5em;
+            font-family: Arial, sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        #cat-title {
+            position: absolute;
+            top: 68%;
+            /* Adjust as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            color: #FFD700;
+            /* Golden color, matching the other title */
+            font-size: 1.2em;
+            font-family: 'Arial', sans-serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            z-index: 2;
+        }
+
+        #cat-container {
+            top: 75%;
+            /* Adjusted to make room for the new title */
+            position: absolute;
+            top: 72%;
+            /* Moved higher up */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            /* Slightly reduced size to fit better */
+            height: 250px;
+            cursor: pointer;
+        }
+
+        #cat-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        #overlay-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            /* 60% transparent black */
+            z-index: 1;
+            /* Above video, below content */
+        }
+
+        #text-overlay,
+        #new-text-title,
+        #new-text,
+        #play-prompt,
+        #cat-container {
+            z-index: 2;
+            /* Above the overlay background */
+        }
+
+        #click-instruction {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8em;
+            font-family: Arial, sans-serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        #candle-container {
+            position: absolute;
+            top: 100%;
+            /* Moved below the cat container */
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            z-index: 2;
+            margin-top: 20px;
+            /* Add some space between cat and candle */
+        }
+
+        #candle-image {
+            width: 150px;
+            /* Increased size */
+            height: auto;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            10% {
+                transform: translate(-51%, -52%) rotate(2deg);
+            }
+
+            20% {
+                transform: translate(-49%, -51%) rotate(-2deg);
+            }
+
+            30% {
+                transform: translate(-52%, -50%) rotate(1.5deg);
+            }
+
+            40% {
+                transform: translate(-48%, -52%) rotate(-1.5deg);
+            }
+
+            50% {
+                transform: translate(-51%, -51%) rotate(1deg);
+            }
+
+            60% {
+                transform: translate(-49%, -50%) rotate(-1deg);
+            }
+
+            70% {
+                transform: translate(-50%, -52%) rotate(0.5deg);
+            }
+
+            80% {
+                transform: translate(-50%, -50%) rotate(-0.5deg);
+            }
+
+            90% {
+                transform: translate(-51%, -51%) rotate(0.25deg);
+            }
+        }
